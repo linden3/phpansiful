@@ -1,0 +1,8 @@
+---
+    app_document_root_base: /vagrant/www
+    app_document_root: "{{ app_document_root_base }}/{{ app_name }}/{{ http_public_directory }}"
+    server_document_root_base: /var/www
+    server_document_root: "{{ server_document_root_base }}/{{ app_name }}/{{ http_public_directory }}"
+    vagrant_user: vagrant
+    remote_host_ip: 192.168.33.1
+    timezone: Europe/Amsterdam

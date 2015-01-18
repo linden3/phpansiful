@@ -1,0 +1,17 @@
+---
+- name: Install Nginx
+  sudo: yes
+  apt: pkg=nginx state=latest
+
+- name: Change Nginx user
+  replace: dest={{ nginx_config_file }} regexp='user nginx;|user www-data;' replace='user {{ vagrant_user }};'
+  notify: restart nginx
+
+- name: Change default Nginx site
+  sudo: yes
+  template: src={{ nginx_vhost_template }} dest={{ nginx_available_vhost_path }}/{{ nginx_vhost_file }}
+  notify: restart nginx
+
+- name: Symlink Nginx vhost in sites-enabled
+  file: src={{ nginx_available_vhost_path }}/{{ nginx_vhost_file }} dest={{ nginx_enabled_vhost_path }}/{{ nginx_vhost_file }} state=link
+  notify: restart nginx
