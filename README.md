@@ -1,4 +1,4 @@
-#ansible-php-nginx
+#Phpansiful
 A Vagrant/Ansible configuration for quickly and easily creating and provisioning Vagrant boxes with a basic PHP/Nginx 
 setup.
 
